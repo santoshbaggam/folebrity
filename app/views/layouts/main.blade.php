@@ -22,6 +22,41 @@
 
     @yield('content')
 
+    @if (!Auth::check())
+
+        <!-- SIGN-IN -->
+        <div class="modal fade" id="modal-sign-in">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><b>SIGN IN</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        @include('partials/sign-in')
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SIGN-IN -->
+
+        <!-- SIGN-UP -->
+        <div class="modal fade" id="modal-sign-up">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><b>SIGN UP</b>. It's damn <b>simple!</b></h4>
+                    </div>
+                    <div class="modal-body">
+                        @include('partials/sign-up')
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SIGN-UP -->
+    @endif
+
     <!-- FOOTER -->
     @include('partials/footer')
     <!-- END FOOTER -->

@@ -64,13 +64,6 @@ input:focus,
 textarea:focus {
     border: 1px solid #999;
 }
-.alert {
-	padding-bottom: 0;
-}
-.alert.alert-success { background: #8ed57c; }
-.alert.alert-info { background: #69b0e4; }
-.alert.alert-warning { background: #ddbb57; }
-.alert.alert-danger { background: #d86464; }
 .content .alert p {
 	font-weight: 400;
 	color: #474747;
@@ -779,9 +772,7 @@ img {
 .blog-masonry .blog-entry .entry-content .entry-content-details p span {
 	color: #000;
 }
-
 .tweets-area {
-	margin-top: 60px;
 	margin-bottom: 40px;
 }
 .tweets-area h3 {
@@ -4846,6 +4837,10 @@ img {
 	font-size: 14px;
 	font-weight: 400;
 	display: block;
+}
+
+.content .panel h3 {
+    font-size: 24px;
 }
 
 .tweets-area .tab-content ul li {

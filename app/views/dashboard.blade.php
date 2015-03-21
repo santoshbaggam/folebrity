@@ -16,15 +16,13 @@
                         @include('partials.sidebar.insta-search')
 
                         @include('partials.sidebar.filters')
-
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="sidebar main-content">
-                        <div class="widget profile">
-                            @include('partials.profile')
-
+                        <div class="widget">
+                            <h3 class="widget-title">Latest</h3>
                             @include('partials.tweets')
                         </div>
                     </div>

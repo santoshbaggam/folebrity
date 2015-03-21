@@ -188,47 +188,13 @@
             </div>
             <!-- END PROJECTS -->
 
-            <!-- BUY THEME -->
-            <div class="buy-theme">
-                <div class="container text-center">
-                    <h2>Stay 'active' with your favorite Celebrities, all at 'one' place!</h2>
-                    <div class="buy-theme-button">
-                        <a href="index.html#" class="button-2">SIGN UP RIGHT NOW!</a>
-                    </div>
-                </div>
-            </div>
-            <!-- END BUY THEME -->
+            <!-- SECTION SIGN UP -->
+            @include('partials.home.section-sign-up')
+            <!-- END SECTION SIGN UP ->
 
-            <!-- CUSTOM -->
-            <div class="custom-type-3">
-                <div class="container">
-                    <div class="col-md-8">
-                        <h2>Enjoy <span style="color:#c62955">6</span> domains</h2><br/>
-                        <h4>For now, we're presenting 6 different domains in fully categorized and sortable manner. Yet more to come. So, be sure to check this space frequently!</h4><br/>
-                        <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <ul class="ul-features">
-                                    <li>Bollywood</li>
-                                    <li>Tollywood</li>
-                                    <li>Hollywood</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-xs-6">
-                                <ul class="ul-features">
-                                    <li>Cricket</li>
-                                    <li>Football</li>
-                                    <li>Tennis</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <p style="margin-top:150px">-- picture placeholer --</p>
-                    </div>
-                </div>
-            </div>
-            <!-- END CUSTOM -->
+            <!-- SECTION DOMAINS -->
+            @include('partials.home.section-domains')
+            <!-- END SECTION DOMAINS -->
 
         </div>
         <!-- END CONTENT -->
