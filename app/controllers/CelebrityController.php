@@ -1,6 +1,15 @@
 <?php
 
+use Falebrity\Repositories\TwitterRepository;
+
 class CelebrityController extends BaseController {
+
+    private $twitter;
+
+    public function __construct(TwitterRepository $twitter)
+    {
+        $this->twitter = $twitter;
+    }
 
     public function index()
     {
@@ -9,7 +18,7 @@ class CelebrityController extends BaseController {
 
     public function show($handle)
     {
-        // check DB for time lag
+        return $this->twitter->getUserTimeline($handle);
 
         // if too lagged, query Twitter
 
@@ -17,5 +26,7 @@ class CelebrityController extends BaseController {
 
         // throw the tweets
     }
+
+    public function get
 
 }
