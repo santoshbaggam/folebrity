@@ -12,8 +12,8 @@ class UserRepository {
         $user = new User;
         $user->twitter_id = $credentials->id;
         $user->name = $credentials->name;
-        $user->access_token = Session::get('oauth_request_token');
-        $user->access_token_secret = Session::get('oauth_request_token_secret');
+//        $user->access_token = Session::get('oauth_request_token');
+//        $user->access_token_secret = Session::get('oauth_request_token_secret');
         $user->save();
 
         return $user;

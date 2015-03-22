@@ -2,7 +2,7 @@
 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
-    return View::make('homepage');
+//    return View::make('homepage');
 }]);
 
 Route::get('dashboard', function()

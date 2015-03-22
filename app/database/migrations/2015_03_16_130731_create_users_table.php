@@ -17,8 +17,6 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             $table->bigInteger('twitter_id');
             $table->string('name', 30);
-            $table->text('access_token');
-            $table->text('access_token_secret');
             $table->rememberToken();
             $table->timestamps();
 		});
