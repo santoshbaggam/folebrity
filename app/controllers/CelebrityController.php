@@ -19,14 +19,6 @@ class CelebrityController extends BaseController {
     public function show($handle)
     {
         return $this->twitter->getUserTimeline($handle);
-
-        // if too lagged, query Twitter
-
-        // add missing items to cache
-
-        // throw the tweets
     }
-
-    public function get
 
 }
