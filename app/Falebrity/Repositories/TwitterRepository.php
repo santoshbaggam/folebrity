@@ -19,16 +19,21 @@ class TwitterRepository {
     {
         $celebrity = Celebrity::where('twitter_handle', $handle)->first();
 
-        if ($celebrity->updated_at->diffInMinutes() > 5) {
-            $old_cache = (Cache::tags('twitter')->has($handle)) ? Cache::tags('twitter')->get($handle) : [];
+        dd($celebrity->updated_at->diffInMinutes());
+        if ($celebrity->updated_at->diffInMinutes() > 1) {
+            dd('querying');
+            $old_cache = Cache::tags('twitter')->get($handle);
 
             $new_cache = Twitter::getUserTimeline([
                 'screen_name' => $handle,
-                'format' => 'json'
+                'format' => 'array',
+                'include_rts' => false
             ]);
 
-            // now so diff and push to Pusher..
-            \Log::info('diff_cache', array_diff($old_cache, $new_cache));
+            if (Cache::tags('twitter')->has($handle))
+            {
+                $this->instaPush($old_cache, $new_cache);
+            }
 
             $celebrity->updated_at = Carbon::now();
             $celebrity->save();
@@ -37,6 +42,11 @@ class TwitterRepository {
         }
 
         return Cache::tags('twitter')->get($handle);
+    }
+
+    public function instaPush($old_data, $new_data)
+    {
+
     }
 
 }

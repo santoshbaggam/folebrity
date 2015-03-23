@@ -1,6 +1,5 @@
 <?php
 
-use Cache;
 use Falebrity\Repositories\TwitterRepository;
 
 class CelebrityController extends BaseController {
@@ -14,22 +13,30 @@ class CelebrityController extends BaseController {
 
     public function index()
     {
+        if (Input::has('domain')) {
+            return Domain::where('name', ucfirst(Input::get('domain')))->first()->celebrities;
+        }
 
+        return Celebrity::all();
     }
 
     public function show($handle)
     {
-        $response = $this->twitter->getUserTimeline($handle);
-
-        $response_obj = json_decode($response);
+        $timeline = $this->twitter->getUserTimeline($handle);
 
         // if tokens are invalid or expired
-        if (isset($response_obj->errors)) {
-            if ($response_obj->errors[0]->code == (88 || 89))
-                $response = Cache::get('twitter'.$handle);
+        if (isset($timeline['errors'])) {
+            if ($timeline['errors'][0]['code'] == (88 || 89))
+                $timeline = Cache::tags('twitter')->get($handle);
         }
+return $timeline;
+        $profile = getProfileDetails($timeline);
 
-        return $response;
+        $timeline = getTweets($timeline);
+
+        return View::make('celebrities.profile')
+                            ->with('profile', $profile)
+                            ->with('tweets', $timeline);
     }
 
 }

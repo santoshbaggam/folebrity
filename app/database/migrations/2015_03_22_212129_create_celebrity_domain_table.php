@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCelebrityDetailsTable extends Migration {
+class CreateCelebrityDomainTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,15 @@ class CreateCelebrityDetailsTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('celebrity_details', function(Blueprint $table)
-        {
+		Schema::create('celebrity_domain', function(Blueprint $table)
+		{
             $table->increments('id');
             $table->integer('celebrity_id')->unsigned();
-            $table->enum('gender', ['male', 'female']);
-            $table->integer('country_id')->unsigned();
+            $table->integer('domain_id')->unsigned();
 
             $table->foreign('celebrity_id')->references('id')->on('celebrities')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('country_id')->references('id')->on('countries')->onUpdate('cascade')->onDelete('cascade');
-        });
+            $table->foreign('domain_id')->references('id')->on('domains')->onUpdate('cascade')->onDelete('cascade');
+		});
 	}
 
 	/**
@@ -31,7 +30,7 @@ class CreateCelebrityDetailsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('celebrity_details');
+		Schema::drop('celebrity_domain');
 	}
 
 }

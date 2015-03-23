@@ -15,10 +15,7 @@ class CreateCategoriesTable extends Migration {
 		Schema::create('categories', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->integer('domain_id')->unsigned();
             $table->string('name', 25);
-
-            $table->foreign('domain_id')->references('id')->on('domains')->onUpdate('cascade')->onDelete('cascade');
 		});
 	}
 

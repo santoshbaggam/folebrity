@@ -12,6 +12,9 @@ Route::get('dashboard', function()
     return 'still not logged in';
 });
 
+# DOMAIN
+Route::get('celebrities', 'CelebrityController@index');
+
 # LOGIN
 Route::get('twitter/login', 'SessionController@create');
 Route::get('twitter/callback', 'SessionController@store');
