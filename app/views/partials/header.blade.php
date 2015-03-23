@@ -24,8 +24,7 @@
                             </ul>
                         </li>
                         <li><a href="#">Compare</a></li>
-                        <li><a href="#" data-toggle="modal" data-target="#modal-sign-in">Sign In</a></li>
-                        <li class="active" data-toggle="modal" data-target="#modal-sign-up"><a href="#">Sign Up</a></li>
+                        <li class="active"><a href="twitter/login">Sign in with Twitter</a></li>
                     </ul>
                 </div>
             </div>

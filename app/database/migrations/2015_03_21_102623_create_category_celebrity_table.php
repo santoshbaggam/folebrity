@@ -16,7 +16,7 @@ class CreateCategoryCelebrityTable extends Migration {
 		{
             $table->increments('id');
             $table->integer('category_id')->unsigned();
-            $table->integer('celebrity_id')->unsigned();
+            $table->bigInteger('celebrity_id')->unsigned();
 
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('celebrity_id')->references('id')->on('celebrities')->onUpdate('cascade')->onDelete('cascade');

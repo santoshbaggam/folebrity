@@ -15,8 +15,8 @@ class CreateCelebrityDetailsTable extends Migration {
         Schema::create('celebrity_details', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('celebrity_id')->unsigned();
-            $table->enum('gender', ['male', 'female']);
+            $table->bigInteger('celebrity_id')->unsigned();
+            $table->enum('gender', ['Male', 'Female']);
             $table->integer('country_id')->unsigned();
 
             $table->foreign('celebrity_id')->references('id')->on('celebrities')->onUpdate('cascade')->onDelete('cascade');

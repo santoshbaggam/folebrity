@@ -1,6 +1,7 @@
 
     <script src="js/modernizr.custom.63321.js" type="text/javascript"></script>
     <script src="js/jquery-1.10.0.min.js" type="text/javascript"></script>
+    <script src="js/twitter-intent.js" type="text/javascript"></script>
     <script src="js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.js" type="text/javascript"></script>
     <script src="js/placeholder.js" type="text/javascript"></script>

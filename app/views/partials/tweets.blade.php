@@ -1,17 +1,23 @@
 <div class="tweets-area">
     <div class="tab-content">
         <ul>
+            @foreach ($tweets as $tweet)
             <li>
+
                 <div class="tweet">
                     <span class="tweet-image">
-                        <img alt="avatar image" src="http://pbs.twimg.com/profile_images/511568227877392385/35tyf2WD_400x400.jpeg" class="avatar" height="70" width="70">
+                        <img alt="avatar image" src="{{ $tweet->user['profile_pic'] }}" class="avatar" height="70" width="70">
                     </span>
                     <span class="tweet-info">
-                        <a href="#">Mahesh Babu</a>
-                        <span><a href="#">@ursTrulyMahesh<img src="images/brand/twitter-bird-16x16.png"></a></span>
-                        <a class="tweet-reply-link" href="post.html#"><i class="icon-501" title="501"></i></a>
+                        <a href="#">{{ $tweet->user['name'] }}</a>
+                        <span>
+                            <a href="#">@{{{ $tweet->user['handle'] }}}<img src="images/brand/twitter-bird-16x16.png"></a>
+                        </span>
+                        <a class="tweet-reply-link" target="_blank" href="https://twitter.com/{{$tweet->user['handle']}}/status/{{$tweet->id}}">
+                            <i class="icon-501" title="501"></i>
+                        </a>
                     </span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur eveniet voluptate quidem <a href="#">@inventore</a> nihil modi nulla unde eligendi tempora dignissimos.</p>
+                    <p>{{ Twitter::linkify($tweet->tweet) }}</p>
                     <p>
                         <small>Retweeted by Santosh</small>
                     </p>
@@ -27,20 +33,9 @@
                         </span>
                     </p>
                 </div>
+
             </li>
-            <li>
-                <div class="tweet">
-                    <span class="tweet-image">
-                        <img alt="avatar image" src="http://pbs.twimg.com/profile_images/511568227877392385/35tyf2WD_400x400.jpeg" class="avatar" height="70" width="70">
-                    </span>
-                    <span class="tweet-info">
-                        <a href="#">Mahesh Babu</a>
-                        <span><a href="#">@ursTrulyMahesh<img src="images/brand/twitter-bird-16x16.png"></a></span>
-                        <a class="tweet-reply-link" href="post.html#"><i class="icon-501" title="501"></i></a>
-                    </span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti consequatur obcaecati sit recusandae quasi quas suscipit debitis? Ratione, inventore, ipsum!</p>
-                </div>
-            </li>
+            @endforeach
         </ul>
     </div>
 </div>

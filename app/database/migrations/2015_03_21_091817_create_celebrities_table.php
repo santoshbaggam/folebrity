@@ -14,8 +14,7 @@ class CreateCelebritiesTable extends Migration {
 	{
 		Schema::create('celebrities', function(Blueprint $table)
 		{
-			$table->increments('id');
-            $table->bigInteger('twitter_id')->unique();
+            $table->bigInteger('id', false, true)->primary();
             $table->string('twitter_handle', 25)->unique();
             $table->string('name', 30);
 			$table->timestamps();

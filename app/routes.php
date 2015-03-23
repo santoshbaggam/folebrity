@@ -3,6 +3,7 @@
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
 //    return View::make('homepage');
+    return getTweets([1,2]);
 }]);
 
 Route::get('dashboard', function()

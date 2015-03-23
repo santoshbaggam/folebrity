@@ -17,7 +17,7 @@ class CelebrityController extends BaseController {
             return Domain::where('name', ucfirst(Input::get('domain')))->first()->celebrities;
         }
 
-        return Celebrity::all();
+        return Celebrity::with('details.country', 'domains', 'categories')->get();
     }
 
     public function show($handle)
@@ -29,14 +29,13 @@ class CelebrityController extends BaseController {
             if ($timeline['errors'][0]['code'] == (88 || 89))
                 $timeline = Cache::tags('twitter')->get($handle);
         }
-return $timeline;
-        $profile = getProfileDetails($timeline);
 
-        $timeline = getTweets($timeline);
+        $data = [
+            'profile' => getProfileDetails($timeline[0]['user']),
+            'tweets'  => getTweets($timeline)
+        ];
 
-        return View::make('celebrities.profile')
-                            ->with('profile', $profile)
-                            ->with('tweets', $timeline);
+        return View::make('celebrities.profile')->with($data);
     }
 
 }

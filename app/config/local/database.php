@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'falebrity',
+			'database'  => 'folebrity',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',

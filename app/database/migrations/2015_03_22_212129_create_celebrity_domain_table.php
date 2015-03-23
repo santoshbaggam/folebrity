@@ -15,7 +15,7 @@ class CreateCelebrityDomainTable extends Migration {
 		Schema::create('celebrity_domain', function(Blueprint $table)
 		{
             $table->increments('id');
-            $table->integer('celebrity_id')->unsigned();
+            $table->bigInteger('celebrity_id')->unsigned();
             $table->integer('domain_id')->unsigned();
 
             $table->foreign('celebrity_id')->references('id')->on('celebrities')->onUpdate('cascade')->onDelete('cascade');
