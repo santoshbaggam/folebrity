@@ -15,14 +15,15 @@
 
                     <div class="jumbotron">
                         <div class="container text-center">
-                            <h1>YOUR FAVOURITE CELEBRITIES, <br>ALL @ ONE PLACE!</h1>
+                            <h1>FOLLOW YOUR CELEBRITIES, <br>ALL @ ONE PLACE!</h1>
                             <p>Your favourite Celebrities on Twitter, all at <span>one</span> place. Stay up to date with their tweets <span>actively</span>.<br>
                                 Follow <span>genuine</span> and well <span>categorized</span> accounts on the go.</p>
                             <p>Search through to make Twitter easy and fun!</p>
                             <div class="insta-search center-block">
-                                <form class="search-it">
+                                <form class="search-it" action="celebrities/q" method="post">
                                     <input type="submit" id="searchsubmit" value="" class="search-button">
-                                    <input type="text" tabindex="1" name="s" id="s" class="search-line" placeholder="search..">
+                                    <input type="text" tabindex="1" id="s" class="insta-search typeahead" placeholder="search..">
+                                    <input type="hidden" class="hidden-q" name="q">
                                 </form>
                             </div>
                         </div>
@@ -36,9 +37,9 @@
             <div class="skills-c">
                 <div class="container">
                     <div class="skills-c-title">
-                        <h1>What's <span style="color:#c62955">Falebrity</span>?</h1>
-                        <p>It's clear and simple! Follow your "<span style="color:#c62955">Fa</span>vorite Ce<span style="color:#c62955">lebrity</span>". Not just one, all!<br>
-                            All at one place and here's all you unique about Falebrity,
+                        <h1>What's <span style="color:#c62955">Folebrity</span>?</h1>
+                        <p>It's clear and simple! "<span style="color:#c62955">Fo</span>llow your Ce<span style="color:#c62955">lebrity</span>". Not just one, all!<br>
+                            All at one place and here's all unique about Folebrity,
                         </p>
                     </div>
                     <div class="row">

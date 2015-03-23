@@ -2,8 +2,14 @@
 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
-//    return View::make('homepage');
-    return getTweets([1,2]);
+    $time = 'Mon Mar 16 07:27:32 +0000 2015';
+
+    $dateTime = new DateTime($time);
+    $d = \Carbon\Carbon::instance($dateTime);
+    return $d->toFormattedDateString()
+        . ' ' . $d->toTimeString();
+
+    return View::make('homepage');
 }]);
 
 Route::get('dashboard', function()
@@ -24,6 +30,9 @@ Route::get('logout', 'SessionController@destroy');
 # PROFILE
 Route::get('{handle}', 'CelebrityController@show');
 
+# INSTA-SEARCH
+Route::post('celebrities/q', 'CelebrityController@search');
+
 # USER REGISTRATION
 Route::get('register', 'UserController@create');
 Route::post('users', 'UserController@store');
@@ -35,4 +44,15 @@ Route::get('domain', function()
 
 Route::get('compare', function() {
    return 'Compare';
+});
+
+Route::get('celebrities/lists', function() {
+    if (Cache::has('celebrities.lists')) {
+        return Cache::get('celebrities.lists');
+    }
+
+    $lists = Celebrity::get(['name as value', 'twitter_handle as handle']);
+
+    Cache::forever('celebrities.lists', $lists);
+    return $lists;
 });

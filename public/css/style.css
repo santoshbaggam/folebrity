@@ -4670,6 +4670,25 @@ img {
 	color: #a7a7a7;
 }
 
+.autocomplete-suggestions {
+    background: #FFF;
+    overflow: auto;
+    border-right: 1px solid #FFF;
+    border-bottom: 1px solid #35a1f2;
+    border-left: 1px solid #FFF;
+}
+.autocomplete-suggestion {
+    font-size: 18px;
+    padding: 10px 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer
+}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #35a1f2; }
+.autocomplete-group { padding: 0 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
 /* TOP */
 .top .widget {
 	margin-bottom: 40px;
@@ -4846,6 +4865,43 @@ img {
 .tweets-area .tab-content ul li {
 	padding-top: 20px;
 	padding-bottom: 0;
+}
+
+.tweet .actions a.reply {
+    display: inline-block;
+    background-image: url("../images/brand/actions/reply.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+.actions a.reply:hover {
+    background-image: url("../images/brand/actions/reply_hover.png");
+    background-repeat: no-repeat;
+}
+.actions a.retweet {
+    display: inline-block;
+    background-image: url("../images/brand/actions/retweet.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+.actions a.retweet:hover {
+    background-image: url("../images/brand/actions/retweet_hover.png");
+    background-repeat: no-repeat;
+}
+.actions a.favourite {
+    display: inline-block;
+    background-image: url("../images/brand/actions/favourite.png");
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+.actions a.favourite:hover {
+    background-image: url("../images/brand/actions/favourite_hover.png");
+    background-repeat: no-repeat;
 }
 
 @media (min-width: 481px and max-width: 767px) {

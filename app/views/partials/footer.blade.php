@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="footer-copyright">
-                        2015 &copy Falebrity.com &nbsp | &nbsp <a href="#">Privacy Policy</a> &nbsp | &nbsp <a href="#">Terms of Use</a>
+                        2015 &copy Folebrity.com &nbsp | &nbsp <a href="#">Privacy Policy</a> &nbsp | &nbsp <a href="#">Terms of Use</a>
                     </div>
                 </div>
                 <div class="col-md-6">

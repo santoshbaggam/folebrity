@@ -22,13 +22,20 @@ class CelebrityController extends BaseController {
 
     public function show($handle)
     {
-        $timeline = $this->twitter->getUserTimeline($handle);
-
-        // if tokens are invalid or expired
-        if (isset($timeline['errors'])) {
-            if ($timeline['errors'][0]['code'] == (88 || 89))
-                $timeline = Cache::tags('twitter')->get($handle);
+        try
+        {
+            $timeline = $this->twitter->getUserTimeline($handle);
         }
+        catch (Exception $e)
+        {
+            $timeline = Cache::tags('twitter')->get($handle);
+        }
+
+//        if tokens are invalid or expired
+//        if (isset($timeline['errors'])) {
+//            if ($timeline['errors'][0]['code'] == (88 || 89))
+//                $timeline = Cache::tags('twitter')->get($handle);
+//        }
 
         $data = [
             'profile' => getProfileDetails($timeline[0]['user']),
@@ -36,6 +43,12 @@ class CelebrityController extends BaseController {
         ];
 
         return View::make('celebrities.profile')->with($data);
+    }
+
+    public function search()
+    {
+        $q = Input::get('q');
+        return Redirect::to("/$q");
     }
 
 }

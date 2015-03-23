@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="header-logo">
-                    <a href="index.html">
+                    <a href="/">
                         <img src="images/logo.png">
                     </a>
                 </div>
