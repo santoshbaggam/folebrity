@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 function getProfileDetails($user) {
 
     $user = array_dot($user);
@@ -50,7 +52,7 @@ function getTweets($tweets)
 function getTimeLink($time)
 {
     $dateTime = new DateTime($time);
-    $d = \Carbon\Carbon::instance($dateTime);
+    $d = Carbon::instance($dateTime);
 
     return '<a href="#" data-toggle="tooltip" class="tooltips" title="' . $d->diffForHumans() . '" data-original-title="' . $d->diffForHumans() . '">' . $d->toFormattedDateString() . '</a>';
 }
