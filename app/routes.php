@@ -2,13 +2,6 @@
 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
-    $time = 'Mon Mar 16 07:27:32 +0000 2015';
-
-    $dateTime = new DateTime($time);
-    $d = \Carbon\Carbon::instance($dateTime);
-    return $d->toFormattedDateString()
-        . ' ' . $d->toTimeString();
-
     return View::make('homepage');
 }]);
 
