@@ -1,16 +1,8 @@
 <?php
 
-Route::get('/', ['as' => 'home', 'uses' => function()
-{
-    return View::make('homepage');
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-Route::get('dashboard', function()
-{
-    if (Auth::check()) return 'logged in';
-
-    return 'still not logged in';
-});
+Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'PageController@dashboard']);
 
 # DOMAIN
 Route::get('celebrities', 'CelebrityController@index');
@@ -44,13 +36,4 @@ App::singleton('Pusher', function($app) {
     return new Pusher($keys['public'], $keys['secret'], $keys['app_id']);
 });
 
-Route::get('celebrities/lists', function() {
-    if (Cache::has('celebrities.lists')) {
-        return Cache::get('celebrities.lists');
-    }
-
-    $lists = Celebrity::get(['name as value', 'twitter_handle as handle']);
-
-    Cache::forever('celebrities.lists', $lists);
-    return $lists;
-});
+Route::get('celebrities/lists', 'PageController@getLists');

@@ -77,83 +77,20 @@
                             <h2>Top Favourites</h2>
                                 <hr>
 
+                                @foreach($profiles as $profile)
                                 <div class="widget-latest-post">
                                     <div class="widget-latest-post-cover">
                                         <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/3616582736/b5304e6f01f84d9c1142b0785a79d01d_400x400.jpeg">
+                                            <img src="{{ $profile['profile_pic'] }}">
                                         </a>
                                     </div>
                                     <h4>
-                                        <a href="#">shruti haasan</a>
-                                        <a href="#"><span>@shrutihaasan</span></a>
+                                        <a href="#">{{ $profile['name'] }}</a>
+                                        <a href="#"><span>@{{{ $profile['handle'] }}}</span></a>
                                     </h4>
-                                    <span class="label label-info">2095729 followers</span>
+                                    <span class="label label-info">{{ $profile['statistics.followers'] }} followers</span>
                                 </div>
-
-                                <div class="widget-latest-post">
-                                    <div class="widget-latest-post-cover">
-                                        <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/511568227877392385/35tyf2WD_400x400.jpeg">
-                                        </a>
-                                    </div>
-                                    <h4>
-                                        <a href="#">Mahesh Babu</a>
-                                        <a href="#"><span>@urstrulyMahesh</span></a>
-                                    </h4>
-                                    <span class="label label-info">1170380 followers</span>
-                                </div>
-
-                                <div class="widget-latest-post">
-                                    <div class="widget-latest-post-cover">
-                                        <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/2683825159/e4442ddd1cba6ef6fb79a369293337cb_400x400.jpeg">
-                                        </a>
-                                    </div>
-                                    <h4>
-                                        <a href="#">Samantha Ruth Prabhu</a>
-                                        <a href="#"><span>@Samanthaprabhu2</span></a>
-                                    </h4>
-                                    <span class="label label-info">1150326 followers</span>
-                                </div>
-
-                                <div class="widget-latest-post">
-                                    <div class="widget-latest-post-cover">
-                                        <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/470523672566829056/Fl38mfdK_400x400.jpeg">
-                                        </a>
-                                    </div>
-                                    <h4>
-                                        <a href="#">rajamouli ss</a>
-                                        <a href="#"><span>@ssrajamouli</span></a>
-                                    </h4>
-                                    <span class="label label-info">1063021 followers</span>
-                                </div>
-
-                                <div class="widget-latest-post">
-                                    <div class="widget-latest-post-cover">
-                                        <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/552306096774197248/Xf9L6YF0_400x400.jpeg">
-                                        </a>
-                                    </div>
-                                    <h4>
-                                        <a href="#">Pawan Kalyan</a>
-                                        <a href="#"><span>@PawanKalyan</span></a>
-                                    </h4>
-                                    <span class="label label-info">297458 followers</span>
-                                </div>
-
-                                <div class="widget-latest-post">
-                                    <div class="widget-latest-post-cover">
-                                        <a href="#">
-                                            <img src="https://pbs.twimg.com/profile_images/521604547832082432/WjmBg2N0_400x400.jpeg">
-                                        </a>
-                                    </div>
-                                    <h4>
-                                        <a href="#">nithiin</a>
-                                        <a href="#"><span>@actor_nithiin</span></a>
-                                    </h4>
-                                    <span class="label label-info">409249 followers</span>
-                                </div>
+                                @endforeach
 
                         </div>
                     </div>

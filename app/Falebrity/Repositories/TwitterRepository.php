@@ -4,6 +4,7 @@ namespace Falebrity\Repositories;
 
 use App;
 use Cache;
+use Carbon\Carbon;
 use Celebrity;
 use Session;
 use Twitter;
@@ -30,10 +31,10 @@ class TwitterRepository {
                 $this->instaPush(cacheDiff($old_cache, $new_cache));
             }
 
-//            $celebrity->updated_at = Carbon::now();
+            $celebrity->updated_at = Carbon::now();
             $celebrity->save();
 
-//            Cache::tags('twitter')->forever($handle, $new_cache);
+            Cache::tags('twitter')->forever($handle, $new_cache);
         }
 
         return Cache::tags('twitter')->get($handle);

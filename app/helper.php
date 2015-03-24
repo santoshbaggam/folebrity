@@ -4,8 +4,8 @@ use Carbon\Carbon;
 
 function cacheDiff($old_cache, $new_cache)
 {
-    $old = json_decode(json_encode(getTweets($old_cache)), true);
-    $new = json_decode(json_encode(getTweets($new_cache)), true);
+    $old = getTweets($old_cache);
+    $new = getTweets($new_cache);
 
     $array = array_map(function($new) use($old) {
         if ( ! in_array($new['id'], array_fetch($old, 'id')) ) {
@@ -20,7 +20,7 @@ function getProfileDetails($user) {
 
     $user = array_dot($user);
 
-    return (object) [
+    return [
         'id' => $user['id'],
         'name' => $user['name'],
         'handle' => $user['screen_name'],
@@ -44,7 +44,7 @@ function getTweets($tweets)
 
         $tweet = array_dot($tweets);
 
-        return (object) [
+        return [
             'id' => $tweet['id'],
             'time' => $tweet['created_at'],
             'tweet' => $tweet['text'],
@@ -69,4 +69,18 @@ function getTimeLink($time)
     $d = Carbon::instance($dateTime);
 
     return '<a href="#" data-toggle="tooltip" class="tooltips" title="' . $d->diffForHumans() . '" data-original-title="' . $d->diffForHumans() . '">' . $d->toFormattedDateString() . '</a>';
+}
+
+function getTopProfiles($handles)
+{
+    $profiles = array_map(function($handles) {
+        $timeline = Cache::tags('twitter')->get($handles['handle']);
+        return array_dot(getProfileDetails($timeline[0]['user']));
+    }, $handles);
+
+    uasort($profiles, function($a, $b) {
+        return $b['statistics.followers'] - $a['statistics.followers'];
+    });
+
+    return new \Illuminate\Support\Collection($profiles);
 }
