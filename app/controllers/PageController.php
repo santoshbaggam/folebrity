@@ -13,9 +13,16 @@ class PageController extends BaseController {
 
     public function dashboard()
     {
-        if (Auth::check()) return 'logged in';
+        $favourites = Auth::user()->favourites()->get(['twitter_handle as handle'])->toArray();
 
-        return 'still not logged in';
+        if ($favourites)
+        {
+            $favourites = getTopProfiles($favourites)->toArray();
+        }
+
+//        dd($favourites);
+
+        return View::make('dashboard')->with('favourites', $favourites);
     }
 
     public function getLists()

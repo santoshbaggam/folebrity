@@ -16,5 +16,4 @@ class Celebrity extends Eloquent {
     {
         return $this->belongsToMany('Category');
     }
-
 }

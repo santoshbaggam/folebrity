@@ -80,13 +80,13 @@
                                 @foreach($profiles as $profile)
                                 <div class="widget-latest-post">
                                     <div class="widget-latest-post-cover">
-                                        <a href="#">
+                                        <a href="/{{ $profile['handle'] }}">
                                             <img src="{{ $profile['profile_pic'] }}">
                                         </a>
                                     </div>
                                     <h4>
-                                        <a href="#">{{ $profile['name'] }}</a>
-                                        <a href="#"><span>@{{{ $profile['handle'] }}}</span></a>
+                                        <a href="/{{ $profile['handle'] }}">{{ $profile['name'] }}</a>
+                                        <a href="/{{ $profile['handle'] }}"><span>@{{{ $profile['handle'] }}}</span></a>
                                     </h4>
                                     <span class="label label-info">{{ $profile['statistics.followers'] }} followers</span>
                                 </div>

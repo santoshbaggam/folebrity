@@ -11,6 +11,9 @@
                             @include('templates.activity-template')
                         </script>
 
+                        {{--get the last 5 tweets from global--}}
+
+
                     </ul>
                 </div>
             </div>

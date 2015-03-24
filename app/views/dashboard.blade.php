@@ -22,8 +22,7 @@
                 <div class="col-md-6">
                     <div class="sidebar main-content">
                         <div class="widget">
-                            <h3 class="widget-title">Latest</h3>
-                            @include('partials.tweets')
+                            @include('partials.dashboard.favourites')
                         </div>
                     </div>
                 </div>

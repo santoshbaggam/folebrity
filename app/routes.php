@@ -31,6 +31,11 @@ Route::get('compare', function() {
    return 'Compare';
 });
 
+View::composer('partials.activity', function($view) {
+    $feeds = Tweet::orderBy('time', 'DESC')->paginate(20);
+    $view->with('feeds', $feeds);
+});
+
 App::singleton('Pusher', function($app) {
     $keys = $app['config']->get('services.pusher');
     return new Pusher($keys['public'], $keys['secret'], $keys['app_id']);

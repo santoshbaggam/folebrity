@@ -23,9 +23,9 @@
                 <div class="col-md-6">
                     <div class="sidebar main-content">
                         <div class="widget profile">
-                            @include('partials.profile')
+                            @include('partials.profile.profile')
 
-                            @include('partials.tweets')
+                            @include('partials.profile.tweets')
                         </div>
                     </div>
                 </div>
