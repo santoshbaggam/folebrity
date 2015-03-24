@@ -2,6 +2,20 @@
 
 use Carbon\Carbon;
 
+function cacheDiff($old_cache, $new_cache)
+{
+    $old = json_decode(json_encode(getTweets($old_cache)), true);
+    $new = json_decode(json_encode(getTweets($new_cache)), true);
+
+    $array = array_map(function($new) use($old) {
+        if ( ! in_array($new['id'], array_fetch($old, 'id')) ) {
+            return $new;
+        }
+    }, $new);
+
+    return array_filter($array);
+}
+
 function getProfileDetails($user) {
 
     $user = array_dot($user);

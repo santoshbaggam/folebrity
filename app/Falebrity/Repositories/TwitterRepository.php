@@ -2,8 +2,8 @@
 
 namespace Falebrity\Repositories;
 
+use App;
 use Cache;
-use Carbon\Carbon;
 use Celebrity;
 use Session;
 use Twitter;
@@ -19,6 +19,7 @@ class TwitterRepository {
     {
         $celebrity = Celebrity::where('twitter_handle', $handle)->first();
 
+//        dd($celebrity->updated_at->diffInMinutes());
         if ($celebrity->updated_at->diffInMinutes() > 1) {
             $old_cache = Cache::tags('twitter')->get($handle);
 
@@ -26,13 +27,13 @@ class TwitterRepository {
 
             if (Cache::tags('twitter')->has($handle))
             {
-                $this->instaPush($old_cache, $new_cache);
+                $this->instaPush(cacheDiff($old_cache, $new_cache));
             }
 
-            $celebrity->updated_at = Carbon::now();
+//            $celebrity->updated_at = Carbon::now();
             $celebrity->save();
 
-            Cache::tags('twitter')->forever($handle, $new_cache);
+//            Cache::tags('twitter')->forever($handle, $new_cache);
         }
 
         return Cache::tags('twitter')->get($handle);
@@ -48,9 +49,20 @@ class TwitterRepository {
         ]);
     }
 
-    public function instaPush($old_data, $new_data)
+    public function instaPush($tweets)
     {
+        foreach ($tweets as $tweet) {
+            App::make('Pusher')->trigger('tweetChannel', 'newTweet', [
+                'tweet' => $this->parse($tweet)
+            ]);
+        }
+    }
 
+    public function parse($tweet)
+    {
+        $tweet['time'] = Twitter::ago($tweet['time']);
+
+        return $tweet;
     }
 
 }

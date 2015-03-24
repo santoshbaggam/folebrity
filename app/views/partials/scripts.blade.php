@@ -12,6 +12,8 @@
     <script src="js/options.js" type="text/javascript"></script>
     <script src="js/plugins.js" type="text/javascript"></script>
     <script src="js/auto-complete.min.js" type="text/javascript"></script>
+    <script src="js/pusher.min.js" type="text/javascript"></script>
+    <script src="js/handlebars.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

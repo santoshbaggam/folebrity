@@ -39,6 +39,11 @@ Route::get('compare', function() {
    return 'Compare';
 });
 
+App::singleton('Pusher', function($app) {
+    $keys = $app['config']->get('services.pusher');
+    return new Pusher($keys['public'], $keys['secret'], $keys['app_id']);
+});
+
 Route::get('celebrities/lists', function() {
     if (Cache::has('celebrities.lists')) {
         return Cache::get('celebrities.lists');
