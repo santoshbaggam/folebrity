@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Falebrity</title>
+    <title>Folebrity | Follow your Celebrity</title>
     <meta name="description" content="">
     <meta name="author" content="Santosh Baggam">
     <link rel="shortcut icon" href="images/elements/favicon.ico" type="image/x-icon">
