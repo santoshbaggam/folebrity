@@ -30,7 +30,8 @@ class SessionController extends BaseController {
 
             return Redirect::to($url);
         }
-        return Redirect::to('twitter/error');
+        return Redirect::back()->with('notification', 'Darn! Something went wrong!')
+                               ->with('alert_type', 'error');;
     }
 
     public function store()
@@ -64,7 +65,7 @@ class SessionController extends BaseController {
 
                 Auth::login($user);
 
-                return Redirect::to('dashboard')
+                return Redirect::to('favourites')
                     ->with('notification', "Congrats! You've successfully signed in!")
                     ->with('alert_type', 'success');
             }

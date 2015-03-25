@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <div class="sidebar main-content">
                         <div class="widget">
-                            @include('partials.dashboard.favourites')
+                            @include('partials.favourite.favourites')
                         </div>
                     </div>
                 </div>

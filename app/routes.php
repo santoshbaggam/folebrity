@@ -2,7 +2,10 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'PageController@dashboard']);
+Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
+
+Route::post('favourite', 'UserController@favourite');
+Route::post('unfavourite', 'UserController@unfavourite');
 
 # DOMAIN
 Route::get('celebrities', 'CelebrityController@index');
@@ -31,10 +34,10 @@ Route::get('compare', function() {
    return 'Compare';
 });
 
-View::composer('partials.activity', function($view) {
-    $feeds = Tweet::orderBy('time', 'DESC')->paginate(20);
-    $view->with('feeds', $feeds);
-});
+//View::composer('partials.activity', function($view) {
+//    $feeds = Tweet::orderBy('time', 'DESC')->paginate(20);
+//    $view->with('feeds', $feeds);
+//});
 
 App::singleton('Pusher', function($app) {
     $keys = $app['config']->get('services.pusher');
@@ -42,3 +45,11 @@ App::singleton('Pusher', function($app) {
 });
 
 Route::get('celebrities/lists', 'PageController@getLists');
+
+View::composer('partials.favourite.fav-btn', function($view) {
+    $favourites = [];
+    if (Auth::check())
+        $favourites = Auth::user()->favourites()->get()->lists('id');
+
+    $view->with('favourites', $favourites);
+});

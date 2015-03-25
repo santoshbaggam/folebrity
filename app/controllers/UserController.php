@@ -29,4 +29,28 @@ class UserController extends BaseController {
 		return Redirect::to('/login')->with('notification', 'Registered! Login now.')
 										->with('alert_type', 'success');
 	}
+
+    public function favourite()
+    {
+        $id = Input::get('id');
+        if (!Auth::check())
+            return Redirect::back()->with('notification', 'You need to sign in first.')
+                                   ->with('alert_type', 'danger');
+
+        Auth::user()->favourites()->attach($id);
+
+        return Redirect::back();
+    }
+
+    public function unfavourite()
+    {
+        $id = Input::get('id');
+        if (!Auth::check()) return Redirect::back()->with('notification', 'You need to sign in first.')
+            ->with('alert_type', 'danger');
+
+        Auth::user()->favourites()->detach($id);
+
+        return Redirect::back();
+    }
+
 }

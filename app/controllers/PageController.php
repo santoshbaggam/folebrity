@@ -11,7 +11,7 @@ class PageController extends BaseController {
         return View::make('home')->with('profiles', $profiles);
     }
 
-    public function dashboard()
+    public function favourites()
     {
         $favourites = Auth::user()->favourites()->get(['twitter_handle as handle'])->toArray();
 
@@ -19,8 +19,6 @@ class PageController extends BaseController {
         {
             $favourites = getTopProfiles($favourites)->toArray();
         }
-
-//        dd($favourites);
 
         return View::make('dashboard')->with('favourites', $favourites);
     }

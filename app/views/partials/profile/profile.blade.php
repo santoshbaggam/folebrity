@@ -17,12 +17,7 @@
                 </span>
             </h3>
 
-            <form method="POST" action="/favourite">
-                <input name="tweeter_id" type="hidden" value="{{$profile['id']}}">
-                <button class="btn btn-primary tooltips favorite" id="follow-btn" type="submit">
-                    FAVOURITE
-                </button>
-            </form>
+            @include('partials.favourite.fav-btn')
 
         </div>
         <div class="stats">
