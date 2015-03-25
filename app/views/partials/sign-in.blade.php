@@ -10,24 +10,16 @@
     </div>
 @endif
 
-{{ Form::open(['url' => 'sessions']) }}
-
-<div class="form-group">
-    {{ Form::label('email', 'Email Address') }}
-    {{ Form::email('email', '', ['class' => 'form-control', 'placeholder' => 'Email']) }}
+<div class="text-center">
+    <a class="btn btn-primary btn-lg">
+        SIGN IN WITH TWITTER
+    </a>
 </div>
-
-<div class="form-group">
-    {{ Form::label('password', 'Password') }}
-    {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
-</div><br>
-
-<div class="form-group text-center">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+<br/>
+<div class="text-center">
+    <img src="images/brand/twitter-bird-16x16.png">
 </div>
-
-<div class="form-group">
-    <a href="/password/remind">Forgot password?</a>
+<br/>
+<div class="alert alert-danger text-center">
+    You need to be signed in with Twitter
 </div>
-
-{{ Form::close() }}

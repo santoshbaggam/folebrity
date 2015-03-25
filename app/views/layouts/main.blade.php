@@ -26,6 +26,19 @@
     @include('partials/footer')
     <!-- END FOOTER -->
 
+    @unless(Auth::check())
+        <!-- modal-sign-in -->
+        <div class="modal fade" id="modal-sign-in">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        @include('partials/sign-in')
+                    </div>
+                </div><!-- modal-content -->
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+    @endunless
+
     <!-- SCRIPTS -->
     @include('partials/scripts')
     <!-- END SCRIPTS -->
