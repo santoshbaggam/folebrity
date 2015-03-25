@@ -12,7 +12,7 @@
 
 <hr>
 <div class="text-center">
-    <a class="btn btn-primary btn-lg">
+    <a href="twitter/login" class="btn btn-primary btn-lg">
         SIGN IN WITH TWITTER
     </a>
 </div>
