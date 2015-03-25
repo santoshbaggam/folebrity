@@ -10,16 +10,17 @@
     </div>
 @endif
 
+<hr>
 <div class="text-center">
     <a class="btn btn-primary btn-lg">
         SIGN IN WITH TWITTER
     </a>
 </div>
-<br/>
+<br>
 <div class="text-center">
     <img src="images/brand/twitter-bird-16x16.png">
 </div>
-<br/>
+<br>
 <div class="alert alert-danger text-center">
     You need to be signed in with Twitter
 </div>
