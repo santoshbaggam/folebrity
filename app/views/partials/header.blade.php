@@ -25,8 +25,10 @@
                         </li>
                         <li><a href="#">Compare</a></li>
 
-                        @if (!Auth::check())
-                        <li class="active"><a href="twitter/login">Sign in with Twitter</a></li>
+                        @if (Auth::check())
+                            <li><a href="logout">Sign out</a></li>
+                        @else
+                            <li class="active"><a href="twitter/login">Sign in with Twitter</a></li>
                         @endif
 
                     </ul>
