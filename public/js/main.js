@@ -31,6 +31,13 @@ channel.bind('newTweet', function(tweet) {
 });
 
 // .AJAX FOR COMPARE
+function insertCompare(data, form) {
+    console.log(data);
+    var li = form.closest('li');
+    var template = Handlebars.compile($(li).find('div.div .compare-template').html());
+    $(li).find('div.div').append(template(data.data));
+}
+
 $('form.compare').on('submit', function(e) {
     var form = $(this);
     var formData = form.serialize();
@@ -39,8 +46,7 @@ $('form.compare').on('submit', function(e) {
         url: "compare",
         data: formData,
         success: function(data) {
-            var template = Handlebars.compile($('#compare-template').html());
-            $('#div').append(template(data.data));
+            insertCompare(data, form);
         }
     });
     e.preventDefault();
