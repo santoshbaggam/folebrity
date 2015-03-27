@@ -23,6 +23,34 @@ class PageController extends BaseController {
         return View::make('dashboard')->with('favourites', $favourites);
     }
 
+    public function compare()
+    {
+        return View::make('compare');
+    }
+
+    public function compareShow()
+    {
+        $handle = Input::get('q');
+
+        try
+        {
+            $profile = Cache::tags('twitter')->get($handle);
+
+            return [
+                'status' => true,
+                'data' => getProfileDetails($profile[0]['user'])
+            ];
+        }
+        catch (Exception $e)
+        {
+            return [
+                'status' => false,
+                'message' => 'Search for your favourite, please!'
+            ];
+        }
+
+    }
+
     public function getLists()
     {
         Cache::forget('celebrities.lists');

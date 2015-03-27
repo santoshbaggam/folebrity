@@ -1,19 +1,16 @@
+// TWEETERS FOR INSTA-SEARCH
 $.getJSON( "celebrities/lists", function( data ) {
     $('.typeahead').autocomplete({
         lookup: data,
         onSelect: function (data) {
-            $('.typeahead').val('@' + data.handle);
+            $(this).val('@' + data.handle);
             $('.hidden-q').val(data.handle);
         }
     });
 });
 
+// PUSHER FOR INSTA-LIST
 function insertTweet(tweet) {
-    // push to the dashboard
-    // var template = Handlebars.compile($('#tweet-template').html());
-    // $('#tweets-container').prepend(template(tweet));
-
-    // push to the activity feed
     var template = Handlebars.compile($('#activity-template').html());
     $('.insta-list').prepend(template(tweet));
 }
@@ -31,4 +28,20 @@ App.Notifier = function() {
 
 channel.bind('newTweet', function(tweet) {
     (new App.Notifier).notify(tweet);
+});
+
+// .AJAX FOR COMPARE
+$('form.compare').on('submit', function(e) {
+    var form = $(this);
+    var formData = form.serialize();
+    $.ajax({
+        type: "POST",
+        url: "compare",
+        data: formData,
+        success: function(data) {
+            var template = Handlebars.compile($('#compare-template').html());
+            $('#div').append(template(data.data));
+        }
+    });
+    e.preventDefault();
 });

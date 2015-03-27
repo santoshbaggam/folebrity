@@ -12,7 +12,7 @@
                 <div class="menu">
                     <div class="responsive-menu">Menu</div>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="#">Domains</a>
                             <ul>
                                 <li><a href="#">Bollywood</a></li>
@@ -23,7 +23,7 @@
                                 <li><a href="#">Tennis</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Compare</a></li>
+                        <li><a href="compare">Compare</a></li>
 
                         @if (Auth::check())
                             <li><a href="logout">Sign out</a></li>

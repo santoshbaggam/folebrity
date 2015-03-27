@@ -14,7 +14,7 @@
                     <p><a href="/{{ $favourite['handle'] }}">@{{{ $favourite['handle'] }}}</a></p>
                 </div>
             </li>
-            @empty
+        @empty
             <li>
                 <div class="alert alert-warning">
                     You have <strong>0</strong> favourites. Checkout few <a href="/celebrities"><b>here..</b></a>

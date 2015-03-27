@@ -4904,6 +4904,23 @@ img {
     background-repeat: no-repeat;
 }
 
+/* COMPARE */
+#compare ul li .item .item-image {
+    float: none;
+}
+
+#compare ul li .item img {
+    width: 125px;
+    padding: 3px;
+    margin-right: -5px;
+    margin-bottom: 15px;
+    border: 1px solid #dddddd;
+}
+
+#compare ul.compare li:first-child {
+    margin-top: 45px;
+}
+
 @media (min-width: 481px and max-width: 767px) {
 	.jumbotron h1 {
 		font-size: 30px;

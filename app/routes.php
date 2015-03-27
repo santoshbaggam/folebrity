@@ -2,6 +2,10 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
+//Route::post('/', function() {
+//
+//});
+
 Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
 
 Route::post('favourite', 'UserController@favourite');
@@ -15,6 +19,9 @@ Route::get('twitter/login', 'SessionController@create');
 Route::get('twitter/callback', 'SessionController@store');
 Route::get('logout', 'SessionController@destroy');
 
+# COMPARE
+Route::get('compare', 'PageController@compare');
+Route::post('compare', 'PageController@compareShow');
 # PROFILE
 Route::get('{handle}', 'CelebrityController@show');
 
@@ -28,10 +35,6 @@ Route::post('users', 'UserController@store');
 Route::get('domain', function()
 {
     return View::make('domain');
-});
-
-Route::get('compare', function() {
-   return 'Compare';
 });
 
 //View::composer('partials.activity', function($view) {
