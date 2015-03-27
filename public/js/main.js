@@ -32,7 +32,6 @@ channel.bind('newTweet', function(tweet) {
 
 // .AJAX FOR COMPARE
 function insertCompare(data, form) {
-    console.log(data);
     var li = form.closest('li');
     var template = Handlebars.compile($(li).find('div.div .compare-template').html());
     $(li).find('div.div').append(template(data.data));
@@ -46,6 +45,11 @@ $('form.compare').on('submit', function(e) {
         url: "compare",
         data: formData,
         success: function(data) {
+            if (data.status == false) {
+                $('#compare-alert').removeClass('hidden').append().html(data.message);
+                return;
+            }
+            $('#compare-alert').addClass('hidden');
             insertCompare(data, form);
         }
     });

@@ -4917,6 +4917,10 @@ img {
     border: 1px solid #dddddd;
 }
 
+#compare ul.compare li span {
+    color: #c62955;
+}
+
 #compare ul.compare li:first-child {
     margin-top: 45px;
 }
