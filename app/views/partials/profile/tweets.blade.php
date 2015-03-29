@@ -2,7 +2,7 @@
     <div class="tab-content">
         <ul>
             @foreach ($tweets as $tweet)
-            <li>
+            <li id="{{$tweet['id']}}">
 
                 <div class="tweet">
                     <span class="tweet-image">
