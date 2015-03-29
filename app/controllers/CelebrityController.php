@@ -13,11 +13,11 @@ class CelebrityController extends BaseController {
 
     public function index()
     {
-        if (Input::has('domain')) {
-            return Domain::where('name', ucfirst(Input::get('domain')))->first()->celebrities;
-        }
+        $celebrities = Celebrity::with('details', 'domains', 'categories')->get(['twitter_handle as handle'])->toArray();
 
-        return Celebrity::with('details.country', 'domains', 'categories')->get();
+        $celebrities = getProfiles($celebrities);
+
+        return View::make('celebrities.index', compact('celebrities'));
     }
 
     public function show($handle)

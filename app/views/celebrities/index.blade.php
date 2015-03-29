@@ -15,14 +15,14 @@
                     <div class="sidebar">
                         @include('partials.sidebar.insta-search')
 
-                        {{--@include('partials.sidebar.filters')--}}
+                        @include('partials.sidebar.filters')
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="sidebar main-content">
                         <div class="widget">
-                            @include('partials.favourites')
+                            @include('partials.celebrities')
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
                     </p>
                     <p class="time">
                         <small>
-                            {{ getTimeLink($tweet['time']) }}
+                            {{ getTimeLink($tweet['time'], $tweet['id']) }}
                         </small>
 
                         <span class="pull-right actions">

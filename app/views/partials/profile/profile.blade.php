@@ -17,7 +17,7 @@
                 </span>
             </h3>
 
-            @include('partials.favourite.fav-btn')
+            @include('partials.buttons.fav-btn')
 
         </div>
         <div class="stats">

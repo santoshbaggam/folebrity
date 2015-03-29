@@ -3,7 +3,11 @@
     <ul>
         @forelse($favourites as $favourite)
             <li>
-                <button class="btn btn-success btn-sm pull-right">FAVOURITED</button>
+                {{ Form::open(['url' => 'unfavourite']) }}
+                {{ Form::hidden('id', $favourite['id']) }}
+                    <button class="btn btn-success btn-sm pull-right favourite">FAVOURITED</button>
+                {{ Form::close() }}
+
                 <div class="item">
                     <a href="/{{ $favourite['handle'] }}" class="item-image">
                         <img src="{{ $favourite['profile_pic'] }}">

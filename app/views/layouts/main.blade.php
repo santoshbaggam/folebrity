@@ -43,5 +43,7 @@
     @include('partials/scripts')
     <!-- END SCRIPTS -->
 
+    @yield('scripts')
+
 </body>
 </html>

@@ -63,24 +63,31 @@ function getTweets($tweets)
     }, $tweets);
 }
 
-function getTimeLink($time)
+function getTimeLink($time, $id)
 {
     $dateTime = new DateTime($time);
     $d = Carbon::instance($dateTime);
 
-    return '<a href="#" data-toggle="tooltip" class="tooltips" title="' . $d->diffForHumans() . '" data-original-title="' . $d->diffForHumans() . '">' . $d->toFormattedDateString() . '</a>';
+    return '<a href="#' . $id . '" data-toggle="tooltip" class="tooltips" title="' . $d->diffForHumans() . '" data-original-title="' . $d->diffForHumans() . '">' . $d->toFormattedDateString() . '</a>';
 }
 
 function getTopProfiles($handles)
+{
+    $profiles = getProfiles($handles)->toArray();
+
+    uasort($profiles, function($a, $b) {
+        return $b['statistics.followers'] - $a['statistics.followers'];
+    });
+
+    return new \Illuminate\Support\Collection($profiles);
+}
+
+function getProfiles($handles)
 {
     $profiles = array_map(function($handles) {
         $timeline = Cache::tags('twitter')->get($handles['handle']);
         return array_dot(getProfileDetails($timeline[0]['user']));
     }, $handles);
-
-    uasort($profiles, function($a, $b) {
-        return $b['statistics.followers'] - $a['statistics.followers'];
-    });
 
     return new \Illuminate\Support\Collection($profiles);
 }

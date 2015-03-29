@@ -12,7 +12,11 @@
                 <div class="menu">
                     <div class="responsive-menu">Menu</div>
                     <ul>
-                        <li><a href="/">Home</a></li>
+                        @if (Auth::check())
+                            <li><a href="favourites">Favourites</a></li>
+                        @else
+                            <li><a href="/">Home</a></li>
+                        @endif
                         <li><a href="#">Domains</a>
                             <ul>
                                 <li><a href="#">Bollywood</a></li>
