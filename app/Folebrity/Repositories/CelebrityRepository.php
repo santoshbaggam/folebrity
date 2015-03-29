@@ -1,6 +1,6 @@
 <?php
 
-namespace Falebrity\Repositories;
+namespace Folebrity\Repositories;
 
 class CelebrityRepository {
 

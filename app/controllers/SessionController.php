@@ -1,6 +1,6 @@
 <?php
 
-use Falebrity\Repositories\UserRepository;
+use Folebrity\Repositories\UserRepository;
 
 class SessionController extends BaseController {
 

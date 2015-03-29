@@ -84,3 +84,29 @@ function getTopProfiles($handles)
 
     return new \Illuminate\Support\Collection($profiles);
 }
+
+function activityFeed($handles)
+{
+    $tweets = [];
+
+    foreach($handles as $handle) {
+        $timeline = getTweets( Cache::tags('twitter')->get($handle['handle']) );
+
+        foreach($timeline as $tweet) {
+            $time = $tweet['time'];
+            $dt = new \DateTime($time);
+            $carbon = Carbon::instance($dt);
+
+            $tweet['rel_time'] = $carbon->timestamp;
+            $tweet['time'] = Twitter::ago($time);
+
+            $tweets[] = array_dot($tweet);
+        }
+    }
+
+    uasort($tweets, function($a, $b) {
+        return $b['rel_time'] - $a['rel_time'];
+    });
+
+    return new \Illuminate\Support\Collection($tweets);
+}

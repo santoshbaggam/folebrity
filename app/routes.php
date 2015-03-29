@@ -1,8 +1,10 @@
 <?php
 
+use Carbon\Carbon;
+
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-//Route::post('/', function() {
+//Route::get('/', function() {
 //
 //});
 
@@ -55,4 +57,12 @@ View::composer('partials.favourite.fav-btn', function($view) {
         $favourites = Auth::user()->favourites()->get()->lists('id');
 
     $view->with('favourites', $favourites);
+});
+
+View::composer('partials.sidebar.activity', function($view) {
+    $profiles = Cache::get('celebrities.lists')->toArray();
+
+    $tweets = activityFeed($profiles)->take(20)->toArray();
+
+    $view->with('tweets', $tweets);
 });

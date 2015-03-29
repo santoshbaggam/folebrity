@@ -1,6 +1,6 @@
 <?php
 
-use Falebrity\Repositories\TwitterRepository;
+use Folebrity\Repositories\TwitterRepository;
 
 class CelebrityController extends BaseController {
 
