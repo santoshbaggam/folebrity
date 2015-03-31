@@ -14,7 +14,7 @@
             FAVOURITE
         </button>
     @else
-        <button class="btn btn-primary tooltips favourite" id="follow-btn" type="button" data-toggle="modal" data-target="#modal-sign-in">
+        <button class="btn btn-primary tooltips favourite pull-right" id="follow-btn" type="button" data-toggle="modal" data-target="#modal-sign-in">
             FAVOURITE
         </button>
     @endif
