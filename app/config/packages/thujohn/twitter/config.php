@@ -15,7 +15,7 @@ return [
 	'USE_SSL'             => true,
 
 	'CONSUMER_KEY'        => getenv('twitter.consumer_key'),
-	'CONSUMER_SECRET'     => getenv('twitter.consumer_key'),
+	'CONSUMER_SECRET'     => getenv('twitter.consumer_secret'),
 	'ACCESS_TOKEN'        => '',
 	'ACCESS_TOKEN_SECRET' => '',
 ];

@@ -2,9 +2,30 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-//Route::get('/', function() {
-//
-//});
+Route::get('/', function() {
+        return Twitter::getUserTimeline([
+            'screen_name' => 'santoshbaggam',
+            'include_rts' => false,
+            'format' => 'array',
+            'count' => 200
+        ]);
+    $c = new Celebrity;
+
+    if (Input::has('domains')) {
+        $c = $c->whereHas('domains', function($q) {
+            $q->whereIn('domains.id', Input::get('domains'));
+        });
+    }
+
+    if (Input::has('categories')) {
+        $c = $c->whereHas('categories', function($q) {
+            $q->whereIn('categories.id', Input::get('categories'));
+        });
+    }
+
+    return $c->get();
+
+});
 
 Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
 
@@ -59,7 +80,7 @@ View::composer(['partials.buttons.fav-btn', 'partials.buttons.fav-btn-sm'], func
 });
 
 View::composer('partials.sidebar.activity', function($view) {
-    $profiles = Cache::get('celebrities.lists')->toArray();
+    $profiles = Cache::get('celebrities.lists');
 
     $tweets = activityFeed($profiles)->take(20)->toArray();
 
@@ -73,3 +94,9 @@ View::composer('partials.sidebar.filters', function($view) {
 
     $view->with(compact('domains', 'categories'));
 });
+
+# DB Calls
+// DB::listen(function($sql, $bindings, $time)
+// {
+//     var_dump($sql, $time);
+// });

@@ -31,11 +31,7 @@ class CelebrityController extends BaseController {
             $timeline = Cache::tags('twitter')->get($handle);
         }
 
-//        if tokens are invalid or expired
-//        if (isset($timeline['errors'])) {
-//            if ($timeline['errors'][0]['code'] == (88 || 89))
-//                $timeline = Cache::tags('twitter')->get($handle);
-//        }
+        // request to generate new tokens if anything goes wrong.. behalf of the client!
 
         $data = [
             'profile' => getProfileDetails($timeline[0]['user']),
