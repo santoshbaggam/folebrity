@@ -2,30 +2,9 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-Route::get('/', function() {
-        return Twitter::getUserTimeline([
-            'screen_name' => 'santoshbaggam',
-            'include_rts' => false,
-            'format' => 'array',
-            'count' => 200
-        ]);
-    $c = new Celebrity;
+// Route::get('/', function() {
 
-    if (Input::has('domains')) {
-        $c = $c->whereHas('domains', function($q) {
-            $q->whereIn('domains.id', Input::get('domains'));
-        });
-    }
-
-    if (Input::has('categories')) {
-        $c = $c->whereHas('categories', function($q) {
-            $q->whereIn('categories.id', Input::get('categories'));
-        });
-    }
-
-    return $c->get();
-
-});
+// });
 
 Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
 
@@ -34,6 +13,7 @@ Route::post('unfavourite', 'UserController@unfavourite');
 
 # DOMAIN
 Route::get('celebrities', 'CelebrityController@index');
+Route::post('celebrities', 'CelebrityController@index');
 
 # LOGIN
 Route::get('twitter/login', 'SessionController@create');
@@ -43,10 +23,6 @@ Route::get('logout', 'SessionController@destroy');
 # COMPARE
 Route::get('compare', 'PageController@compare');
 Route::post('compare', 'PageController@compareShow');
-
-Route::get('domain', function() {
-    return View::make('domain');
-});
 
 # PROFILE
 Route::get('{handle}', 'CelebrityController@show');

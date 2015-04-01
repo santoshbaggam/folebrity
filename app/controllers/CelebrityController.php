@@ -13,10 +13,29 @@ class CelebrityController extends BaseController {
 
     public function index()
     {
-        $celebrities = Celebrity::with('details', 'domains', 'categories')->get(['twitter_handle as handle'])->toArray();
+        $c = new Celebrity;
 
-        $celebrities = getProfiles($celebrities);
+        if (Input::has('domains')) {
+            $c = $c->whereHas('domains', function($q) {
+                $q->whereIn('domains.id', Input::get('domains'));
+            });
+        }
 
+        if (Input::has('categories')) {
+            $c = $c->whereHas('categories', function($q) {
+                $q->whereIn('categories.id', Input::get('categories'));
+            });
+        }
+
+        if (Input::has('gender')) {
+            $c = $c->whereHas('details', function($q) {
+                $q->whereIn('details.gender', Input::get('gender'));
+            });
+        }
+
+        $celebrities = getProfiles($c->get(['twitter_handle as handle'])->toArray());
+
+        Input::flash();
         return View::make('celebrities.index', compact('celebrities'));
     }
 

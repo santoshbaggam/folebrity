@@ -160,9 +160,9 @@ h1, h2, h3, h4, h5, h6 {
 .content h6 {
 	color: #474747;
 	text-transform: uppercase;
-	font-size: 12px;
-	line-height: 1.4em;
-	font-weight: 800;
+/*	font-size: 12px;
+	line-height: 1.4em;*/
+	font-weight: 600;
 }
 .content {
 	padding-bottom: 60px;
