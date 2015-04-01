@@ -18,7 +18,7 @@
         @empty
         <li>
             <div class="alert alert-warning">
-                You have <strong>0</strong> favourites. Checkout few <a href="/celebrities"><b>here..</b></a>
+                No celebrity found!
             </div>
         </li>
         @endforelse

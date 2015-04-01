@@ -29,7 +29,7 @@ class CelebrityController extends BaseController {
 
         if (Input::has('gender')) {
             $c = $c->whereHas('details', function($q) {
-                $q->whereIn('details.gender', Input::get('gender'));
+                $q->whereIn('celebrity_details.gender', Input::get('gender'));
             });
         }
 

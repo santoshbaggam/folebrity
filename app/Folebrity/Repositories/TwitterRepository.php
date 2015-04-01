@@ -44,7 +44,7 @@ class TwitterRepository {
     {
         return Twitter::getUserTimeline([
             'screen_name' => $handle,
-            'include_rts' => false,
+            'include_rts' => true,
             'format' => 'array',
             'count' => 200
         ]);
