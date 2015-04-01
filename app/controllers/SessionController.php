@@ -17,7 +17,7 @@ class SessionController extends BaseController {
         $force_login = FALSE;
         $callback_url = 'http://' . $_SERVER['HTTP_HOST'] . '/twitter/callback';
 
-        Twitter::set_new_config(['token' => '', 'secret' => '']);
+        Twitter::reconfig(['token' => '', 'secret' => '']);
 
         $token = Twitter::getRequestToken($callback_url);
 
@@ -42,7 +42,7 @@ class SessionController extends BaseController {
                 'secret' => Session::get('oauth_request_token_secret'),
             ];
 
-            Twitter::set_new_config($request_token);
+            Twitter::reconfig($request_token);
 
             $oauth_verifier = FALSE;
             if (Input::has('oauth_verifier')) {

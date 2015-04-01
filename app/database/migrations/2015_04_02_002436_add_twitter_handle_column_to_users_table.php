@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDomainsTable extends Migration {
+class AddTwitterHandleColumnToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,9 @@ class CreateDomainsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('domains', function(Blueprint $table)
+		Schema::table('users', function(Blueprint $table)
 		{
-			$table->increments('id');
-            $table->string('name', 25);
-            $table->tinyInteger('status');
+			$table->string('twitter_handle', 25)->after('twitter_id');
 		});
 	}
 
@@ -27,7 +25,10 @@ class CreateDomainsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('domains');
+		Schema::table('users', function(Blueprint $table)
+		{
+			$table->dropColumn('twitter_handle');
+		});
 	}
 
 }
