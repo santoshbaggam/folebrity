@@ -5,13 +5,13 @@
         @foreach ($profiles as $profile)
             <li>
                 <div class="item">
-                    <a href="#" class="item-image">
+                    <a href="/{{ $profile['handle'] }}" class="item-image">
                         <img src="{{ $profile['profile_pic'] }}">
                     </a>
                     <h3>
-                        <a href="#">Pawan Kalyan</a>
+                        <a href="/{{ $profile['handle'] }}">Pawan Kalyan</a>
                     </h3>
-                    <p><a href="/#">@PawanKalyan</a></p>
+                    <p><a href="/{{ $profile['handle'] }}">@PawanKalyan</a></p>
                 </div>
             </li>
         @endforeach
