@@ -2,9 +2,9 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-Route::get('/', function() {
-    return Celebrity::orderByRaw('RAND()')->take(3)->get(['twitter_handle as handles']);
-});
+// Route::get('/', function() {
+
+// });
 
 Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
 
