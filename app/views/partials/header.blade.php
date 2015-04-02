@@ -19,12 +19,9 @@
                         @endif
                         <li><a href="#">Domains</a>
                             <ul>
-                                <li><a href="#">Bollywood</a></li>
-                                <li><a href="#">Tollywood</a></li>
-                                <li><a href="#">Kollywood</a></li>
-                                <li><a href="#">Cricket</a></li>
-                                <li><a href="#">Football</a></li>
-                                <li><a href="#">Tennis</a></li>
+                                @foreach ($domains as $domain)
+                                    <li><a href="/celebrities?domains[]={{$domain->id}}">{{$domain->name}}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                         <li><a href="compare">Compare</a></li>

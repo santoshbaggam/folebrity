@@ -63,8 +63,7 @@ View::composer('partials.sidebar.activity', function($view) {
     $view->with('tweets', $tweets);
 });
 
-View::composer('partials.sidebar.filters', function($view) {
-
+View::composer(['partials.sidebar.filters', 'partials.header'], function($view) {
     $domains = Domain::with('categories')->where('status', 1)->get();
     $categories = Category::with('domains')->get();
 

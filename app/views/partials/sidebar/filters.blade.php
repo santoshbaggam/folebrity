@@ -4,22 +4,22 @@
     <h6>Domains</h6>
     {{ Form::open(['url' => 'celebrities']) }}
     
-    @foreach($domains->toArray() as $domain)
+    @foreach($domains as $domain)
         <div class="checkbox">
             <label>
-                {{ Form::checkbox('domains[]', $domain['id']) }}
-                {{ $domain['name'] }}
+                {{ Form::checkbox('domains[]', $domain->id) }}
+                {{ $domain->name }}
             </label>
         </div>
     @endforeach
     
     <h6>Categories</h6>
 
-    @foreach($categories->toArray() as $category)
+    @foreach($categories as $category)
         <div class="checkbox">
             <label>
-                {{ Form::checkbox('categories[]', $category['id']) }}
-                {{ $category['name'] }}
+                {{ Form::checkbox('categories[]', $category->id) }}
+                {{ $category->name }}
             </label>
         </div>
     @endforeach
