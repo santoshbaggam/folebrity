@@ -48,6 +48,20 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('admin', function() 
+{
+	if (Auth::check()) {
+		if (Auth::user()->twitter_handle != 'santoshbaggam')
+		{
+			return Redirect::to('/');
+		}
+	}
+	else
+	{
+		return Redirect::to('/');
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {
