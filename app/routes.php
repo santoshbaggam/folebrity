@@ -2,9 +2,9 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
 
-// Route::get('/', function() {
-
-// });
+Route::get('/', function() {
+    return Celebrity::orderByRaw('RAND()')->take(3)->get(['twitter_handle as handles']);
+});
 
 Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
 
@@ -63,11 +63,18 @@ View::composer('partials.sidebar.activity', function($view) {
     $view->with('tweets', $tweets);
 });
 
-View::composer(['partials.sidebar.filters', 'partials.header'], function($view) {
+View::composer(['partials.header', 'partials.sidebar.filters'], function($view) {
     $domains = Domain::with('categories')->where('status', 1)->get();
     $categories = Category::with('domains')->get();
 
     $view->with(compact('domains', 'categories'));
+});
+
+View::composer('partials.sidebar.recommendations', function($view) {
+    $handles = Celebrity::orderByRaw('RAND()')->take(3)->get(['twitter_handle as handle']);
+    $profiles = getProfiles($handles->toArray());
+
+    $view->with(compact('profiles'));
 });
 
 # DB Calls
