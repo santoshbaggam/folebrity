@@ -1,4 +1,4 @@
-<h3 class="widget-title">Favourites</h3>
+<h3 class="widget-title">Celebrities</h3>
 <div class="tab-content">
     <ul>
         @forelse($celebrities as $celebrity)
