@@ -12,7 +12,7 @@
     <ul class="text-center compare">
         <li><span>TWEETS:</span> {{ statistics.tweets }}</li>
         <li><span>FOLLOWING:</span> {{ statistics.following }}</li>
-        <li><span>FOLLOWERS:</span> {{ statistics.followers }}></li>
+        <li><span>FOLLOWERS:</span> {{ statistics.followers }}</li>
         <li><span>Country:</span> India</li>
     </ul>
 </div>
