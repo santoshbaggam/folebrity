@@ -1,22 +1,22 @@
 <?php
 
-Route::get('/', ['as' => 'home', 'uses' => 'PageController@home']);
+Route::get('/', ['as' => 'home', 'uses' => 'PageController@home'])->before('guest');
 
 // Route::get('/', function() {
 
 // });
 
-Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites']);
+Route::get('favourites', ['as' => 'favourites', 'uses' => 'PageController@favourites'])->before('auth');
 
-Route::post('favourite', 'UserController@favourite');
-Route::post('unfavourite', 'UserController@unfavourite');
+Route::post('favourite', 'UserController@favourite')->before('auth');
+Route::post('unfavourite', 'UserController@unfavourite')->before('auth');
 
 # DOMAIN
 Route::get('celebrities', 'CelebrityController@index');
 Route::post('celebrities', 'CelebrityController@index');
 
 # LOGIN
-Route::get('twitter/login', 'SessionController@create');
+Route::get('twitter/login', 'SessionController@create')->before('guest');
 Route::get('twitter/callback', 'SessionController@store');
 Route::get('logout', 'SessionController@destroy');
 
@@ -31,13 +31,8 @@ Route::get('{handle}', 'CelebrityController@show');
 Route::post('celebrities/q', 'CelebrityController@search');
 
 # USER REGISTRATION
-Route::get('register', 'UserController@create');
-Route::post('users', 'UserController@store');
-
-Route::get('domain', function()
-{
-    return View::make('domain');
-});
+// Route::get('register', 'UserController@create');
+// Route::post('users', 'UserController@store');
 
 App::singleton('Pusher', function($app) {
     $keys = $app['config']->get('services.pusher');
