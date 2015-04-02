@@ -20,7 +20,6 @@ class TwitterRepository {
     {
         $celebrity = Celebrity::where('twitter_handle', $handle)->first();
 
-//        dd($celebrity->updated_at->diffInMinutes());
         if ($celebrity->updated_at->diffInMinutes() > 1) {
             $old_cache = Cache::tags('twitter')->get($handle);
 

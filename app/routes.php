@@ -72,11 +72,8 @@ View::composer('partials.sidebar.recommendations', function($view) {
     $view->with(compact('profiles'));
 });
 
-Route::group(['before' => 'admin', 'prefix' => 'super'], function() {
-    Route::get('name', function() 
-    {
-        return 'super user';
-    });
+Route::group(['before' => 'admin', 'prefix' => 'sudo'], function() {
+    Route::get('cache/{handle}', 'SudoController@cache');
 });
 
 # DB Calls
