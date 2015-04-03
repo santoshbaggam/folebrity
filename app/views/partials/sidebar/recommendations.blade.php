@@ -9,7 +9,7 @@
                         <img src="{{ $profile['profile_pic'] }}">
                     </a>
                     <h3>
-                        <a href="/{{ $profile['handle'] }}">Pawan Kalyan</a>
+                        <a href="/{{ $profile['handle'] }}">{{ $profile['name'] }}</a>
                     </h3>
                     <p><a href="/{{ $profile['handle'] }}">@{{{ $profile['handle'] }}}</a></p>
                 </div>
