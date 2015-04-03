@@ -11,7 +11,7 @@
                     <h3>
                         <a href="/{{ $profile['handle'] }}">Pawan Kalyan</a>
                     </h3>
-                    <p><a href="/{{ $profile['handle'] }}">@PawanKalyan</a></p>
+                    <p><a href="/{{ $profile['handle'] }}">@{{{ $profile['handle'] }}}</a></p>
                 </div>
             </li>
         @endforeach
